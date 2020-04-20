@@ -1,28 +1,28 @@
 module.exports = {
   siteMetadata: {
-    title: `VAR_SITE_TITLE`,
+    title: `${SITE_TITLE}`,
     author: {
-      name: `VAR_SITE_AUTHOR`,
-      summary: `VAR_SITE_AUTHOR_SUMMARY`,
+      name: `${SITE_AUTHOR}`,
+      summary: `${SITE_AUTHOR_SUMMARY}`,
     },
-    description: `VAR_SITE_DESCRIPTION`,
-    siteUrl: `VAR_SITE_URL`,
+    description: `${SITE_DESCRIPTION}`,
+    siteUrl: `${SITE_URL}`,
     social: {
-      twitter: `VAR_SITE_TWITTER_HANDLE`,
+      twitter: `${SITE_TWITTER_HANDLE}`,
     },
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}VAR_SITE_PAGES_DIR`,
+        path: `${__dirname}${SITE_PAGES_DIR}`,
         name: `blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}VAR_SITE_ASSETS_DIR`,
+        path: `${__dirname}${SITE_ASSETS_DIR}`,
         name: `assets`,
       },
     },
@@ -60,13 +60,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `VAR_SITE_NAME`,
-        short_name: `VAR_SITE_SHORT_NAME`,
-        start_url: `VAR_SITE_START_URL`,
-        background_color: `VAR_SITE_BACKGROUND_COLOR`,
-        theme_color: `VAR_SITE_THEME_COLOR`,
+        name: `${SITE_NAME}`,
+        short_name: `${SITE_SHORT_NAME}`,
+        start_url: `${SITE_START_URL}`,
+        background_color: `${SITE_BACKGROUND_COLOR}`,
+        theme_color: `${SITE_THEME_COLOR}`,
         display: `minimal-ui`,
-        icon: `VAR_SITE_ICON_LOCATION`,
+        icon: `${SITE_ICON_LOCATION}`,
       },
     },
     `gatsby-plugin-react-helmet`,

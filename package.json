@@ -1,11 +1,11 @@
 {
-  "name": "VAR_SITE_NAME",
+  "name": "${SITE_NAME}",
   "private": true,
-  "description": "VAR_SITE_DESCRIPTION",
-  "version": "VAR_SITE_VERSION",
-  "author": "VAR_SITE_AUTHOR",
+  "description": "${SITE_DESCRIPTION}",
+  "version": "${SITE_VERSION}",
+  "author": "${SITE_AUTHOR}",
   "bugs": {
-    "url": "VAR_SITE_ISSUES_URL"
+    "url": "${SITE_ISSUES_URL}"
   },
   "dependencies": {
     "gatsby": "^2.20.12",
@@ -33,24 +33,24 @@
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19",
     "typography-theme-fairy-gates": "^0.16.19",
-    "typography-theme-lincoln": "^0.16.19",
     "typography-theme-grand-view": "^0.16.19",
-    "typography-theme-twin-peaks": "^0.16.19"
+    "typography-theme-lincoln": "^0.16.19",
+    "typography-theme-twin-peaks": "^0.16.19",
+    "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "homepage": "VAR_SITE_HOME_PAGE",
+  "homepage": "${SITE_HOME_PAGE}",
   "keywords": [
-    "VAR_SITE_NAME", "blog", "poshjosh", "VAR_SITE_AUTHOR"
+    "${SITE_NAME}", "blog", "poshjosh", "${SITE_AUTHOR}"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
-    "type": "VAR_SITE_REPOSITORY_TYPE",
-    "url": "VAR_SITE_REPOSITORY_URL"
+    "type": "${SITE_REPOSITORY_TYPE}",
+    "url": "${SITE_REPOSITORY_URL}"
   },
   "scripts": {
     "deploy": "gatsby-plugin-s3 deploy --yes",
