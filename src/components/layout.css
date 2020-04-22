@@ -4,7 +4,7 @@ body, html {
 
 body, article{
     background-color: #ffeedd;
-    color: #123456
+    color: #123456;
 }
 
 /**
@@ -13,6 +13,10 @@ body, article{
 a{
     text-decoration: none;
     box-shadow: none;
+}
+
+.trace{
+    border: 2px solid black;
 }
 
 .navArrow{
@@ -61,6 +65,9 @@ a{
     border: 0.5rem solid #eeddcc;
     padding: 3rem;
 }
+#articleContent {
+    font-size: 1.25rem;
+}
 #sideSection {
     width: 25%;
     height: 100%;
@@ -74,7 +81,8 @@ a{
 /* The hero image */
 .heroImage {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://img1.wsimg.com/isteam/stock/VJdp5Gd/:/rs=w:1360,h:580,cg:true,m/cr=w:1360,h:580,a:cc");
+  /**background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./banner.jpg"); */
+  background-image: url("./banner.jpg");
 
   /* Set a specific height */
   height: 50%;
@@ -88,10 +96,14 @@ a{
 
 /* Place text in the middle of the image */
 .heroText {
+  font-family: Montserrat, sans-serif;
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  padding: 1rem;
 }
