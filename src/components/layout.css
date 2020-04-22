@@ -104,6 +104,6 @@ a{
   transform: translate(-50%, -50%);
   color: white;
   background: rgb(0, 0, 0); /* Fallback color */
-  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  background: rgba(0, 0, 0, 0.3); /* Black background with 0.5 opacity */
   padding: 1rem;
 }
