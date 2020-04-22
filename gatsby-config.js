@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `${SITE_URL}`,
     social: {
       twitter: `${SITE_TWITTER_HANDLE}`,
+      facebook: `${SITE_FACEBOOK_HANDLE}`,
     },
   },
   plugins: [
