@@ -16,7 +16,21 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 60, height: 60) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      twitter: file(absolutePath: { regex: "/twitter-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 32, height: 32) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      facebook: file(absolutePath: { regex: "/facebook-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 32, height: 32) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -29,6 +43,7 @@ const Bio = () => {
           }
           social {
             twitter
+            facebook
           }
         }
       }
@@ -40,9 +55,10 @@ const Bio = () => {
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(0.75),
+        marginBottom: rhythm(3 / 4),
+        maxHeight: 62,
+        paddingBottom: 0,
         background: `#eeddcc`,
-        verticalAlign: `center`,
       }}
     >
       <Image
@@ -50,10 +66,9 @@ const Bio = () => {
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          paddingBottom: 0,
-          minWidth: 50,
+          minWidth: 60,
           borderRadius: `100%`,
+          paddingBottom: 0,
         }}
         imgStyle={{
           borderRadius: `50%`,
@@ -61,7 +76,6 @@ const Bio = () => {
       />
       <p
         style={{
-          marginBottom: 0,
           paddingBottom: 0,
         }}
       >
@@ -69,8 +83,39 @@ const Bio = () => {
           <small>Written by</small>&emsp;<strong>{author.name}</strong>&emsp;<tt>{author.summary}</tt>&emsp;
         </span>
         <br/>
-        <a href={`https://twitter.com/${social.twitter}`}>
-          <small class="nobreak">Follow me on Twitter</small>
+        <a
+          href={`https://twitter.com/${social.twitter}`}
+          target="_blank" rel="noopener noreferrer"
+        >
+          <Image
+            fixed={data.twitter.childImageSharp.fixed}
+            alt="Follow me on twitter"
+            style={{
+              marginRight: rhythm(1 / 2),
+              minWidth: 32,
+              borderRadius: `100%`,
+            }}
+            imgStyle={{
+              borderRadius: `50%`,
+            }}
+          />
+        </a>
+        <a
+          href={`https://www.facebook.com/${social.facebook}`}
+          target="_blank" rel="noopener noreferrer"
+        >
+          <Image
+            fixed={data.facebook.childImageSharp.fixed}
+            alt="Follow me on facebook"
+            style={{
+              marginRight: rhythm(1 / 2),
+              minWidth: 32,
+              borderRadius: `100%`,
+            }}
+            imgStyle={{
+              borderRadius: `50%`,
+            }}
+          />
         </a>
       </p>
     </div>
