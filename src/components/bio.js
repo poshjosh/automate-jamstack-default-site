@@ -74,12 +74,12 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p
+      <div
         style={{
           paddingBottom: 0,
         }}
       >
-        <span class="nobreak nooverflow">
+        <span className="nobreak nooverflow">
           <small>Written by</small>&emsp;<strong>{author.name}</strong>&emsp;<tt>{author.summary}</tt>&emsp;
         </span>
         <br/>
@@ -117,7 +117,7 @@ const Bio = () => {
             }}
           />
         </a>
-      </p>
+      </div>
     </div>
   )
 }
