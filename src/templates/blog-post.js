@@ -15,7 +15,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} showSearchForm={true}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -65,14 +65,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <li>
                   {previous && (
                     <Link to={previous.fields.slug} rel="prev">
-                      <span class="navArrow">&lt;</span>&emsp;{previous.frontmatter.title}
+                      <span className="navArrow">&lt;</span>&emsp;{previous.frontmatter.title}
                     </Link>
                   )}
                 </li>
                 <li>
                   {next && (
                     <Link to={next.fields.slug} rel="next">
-                      {next.frontmatter.title}&emsp;<span class="navArrow">&gt;</span>
+                      {next.frontmatter.title}&emsp;<span className="navArrow">&gt;</span>
                     </Link>
                   )}
                 </li>

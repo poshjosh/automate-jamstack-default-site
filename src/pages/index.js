@@ -11,9 +11,8 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} showSearchForm={true}>
       <SEO title="All posts" />
-      <br/>
       <Bio />
       <div id="indexContainer">
         <h1
@@ -39,7 +38,7 @@ const BlogIndex = ({ data, location }) => {
                   <small>{node.frontmatter.date}</small>
                 </header>
                 <section>
-                  <p
+                  <div
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
                     }}
