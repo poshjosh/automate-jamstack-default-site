@@ -72,7 +72,7 @@ const BlogSearch = props => {
   const { location } = props
 
   return (
-    <Layout showSearchForm={false} location={location} title={siteTitle}>
+    <Layout showSearchForm={true} location={location} title={siteTitle}>
 
       {handleQueryParam()}
 

@@ -79,8 +79,10 @@ const Bio = () => {
           paddingBottom: 0,
         }}
       >
-        <span className="nobreak nooverflow">
-          <small>Written by</small>&emsp;<strong>{author.name}</strong>&emsp;<tt>{author.summary}</tt>&emsp;
+        <span>
+          <small className="nobreak nooverflow">Written by</small>
+          &emsp;<strong className="nobreak nooverflow">{author.name}</strong>
+          &emsp;<tt>{author.summary}</tt>&emsp;
         </span>
         <br/>
         <a

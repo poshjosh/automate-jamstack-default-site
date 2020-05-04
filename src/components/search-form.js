@@ -21,6 +21,13 @@ class SearchForm extends React.Component {
   render() {
     return (this.props.show === true) && (
       <form
+        style={{
+          float: `right`,
+          display: `inline-block`,
+          margin: `0`,
+          border: `0`,
+          padding: `0`,
+        }}
         onSubmit={this.handleSubmit}>
         <label>
           <input

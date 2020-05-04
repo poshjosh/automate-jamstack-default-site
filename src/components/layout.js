@@ -50,16 +50,25 @@ const Layout = ({ location, title, children, showSearchForm }) => {
         marginTop: 0,
       }}
     >
+      <nav className="fixedtop">
+        {/** Use `a` not `Link` as nav.a has style in css file */}
+        <a href="/">ChinomsoIkwuagwu.com</a>
+        <SearchForm id="layout_search-form-container" show={showSearchForm}/>
+      </nav>
       <header
         className="heroImage"
         style={{
+          marginTop: rhythm(1.2), // To prevent content overlay with topbar above
           height: rhythm(12.0),
           color: `white`,
         }}
       >{header}</header>
-      <SearchForm show={showSearchForm}/>
       <main>{children}</main>
-      <footer>
+      <footer className="fullWidth"
+        style={{
+          textAlign: `center`,
+        }}
+      >
         &copy; {new Date().getFullYear()}
         {` `}
         <a href="http://www.looseboxes.com/legal/licenses/software.html">looseBoxes.com</a>
