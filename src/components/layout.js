@@ -50,7 +50,12 @@ const Layout = ({ location, title, children, showSearchForm }) => {
         marginTop: 0,
       }}
     >
-      <nav className="fixedtop">
+      <nav
+        className="fixedtop"
+        style={{
+          height: rhythm(1.2), // sync with marginTop of heroImage below
+        }}
+      >
         {/** Use `a` not `Link` as nav.a has style in css file */}
         <a href="/">ChinomsoIkwuagwu.com</a>
         <SearchForm id="layout_search-form-container" show={showSearchForm}/>
@@ -58,7 +63,7 @@ const Layout = ({ location, title, children, showSearchForm }) => {
       <header
         className="heroImage"
         style={{
-          marginTop: rhythm(1.2), // To prevent content overlay with topbar above
+          marginTop: rhythm(1.2), // sync with nav above. Prevents content overlap with nav above
           height: rhythm(12.0),
           color: `white`,
         }}
