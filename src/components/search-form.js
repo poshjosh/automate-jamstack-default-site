@@ -14,8 +14,16 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
+//    console.log('SearchForm. Submitting query to search');
     event.preventDefault();
-    window.location.href = '/search?q=' + this.state.value
+    var query;
+    if(this.state.value) {
+      query = this.state.value;
+    }else{
+      query = document.getElementById('search-form_search-box').value;
+    }
+//    console.log('SearchForm. Submitting query to search: ' + query);
+    window.location.href = '/search/?q=' + query;
   }
 
   render() {

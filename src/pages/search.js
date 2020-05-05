@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const BlogSearch = props => {
 
-//  console.log('Props: ' + props)
+//  console.log('BlogSearch. Props: ' + props)
 
   const { data } = props
   const allPosts = data.allMarkdownRemark.edges
@@ -20,7 +20,7 @@ const BlogSearch = props => {
 
   const handleQueryChange = query => {
 
-//    console.log('Query: ' + query)
+//    console.log('BlogSearch. Query: ' + query)
 
     const { data } = props
 
@@ -57,7 +57,7 @@ const BlogSearch = props => {
       })
       const searchParams = new URLSearchParams(props.location.search)
       const queryParam = searchParams.get('q')
-//      console.log('Query param: ' + queryParam)
+//      console.log('BlogSearch. Query param: ' + queryParam)
       if(queryParam) {
         handleQueryChange(queryParam)
       }
@@ -72,20 +72,12 @@ const BlogSearch = props => {
   const { location } = props
 
   return (
-    <Layout showSearchForm={true} location={location} title={siteTitle}>
+    <Layout showSearchForm={false} location={location} title={siteTitle}>
 
       {handleQueryParam()}
 
       <div id="indexContainer">
         <SEO title="All posts" />
-        <br/>
-        <h1
-          style={{
-            marginTop: 0,
-            textAlign: `center`,
-          }}
-        >Search</h1>
-
         <div id="indexSection">
           <div className="searchBox fullWidth">
             <input
