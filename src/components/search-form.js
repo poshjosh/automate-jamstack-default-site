@@ -46,7 +46,7 @@ class SearchForm extends React.Component {
             placeholder="Type to search..."
             onChange={this.handleChange} />
         </label>
-        <input
+        <input class="emphasis-button"
           type="submit"
           value="Search"
         />

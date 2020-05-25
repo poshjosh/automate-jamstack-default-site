@@ -43,6 +43,12 @@ a{
   padding: 0 1rem 0 1rem;
 }
 
+.emphasis-button{
+  color: #ffeedd;
+  background-color: #624;
+  border:1px solid #987;
+}
+
 /* Change background on mouse-over */
 .fixedtop a:hover {
   background: #ffeedd;
@@ -113,7 +119,7 @@ a{
     padding: 3rem;
 }
 #articleContent {
-    font-size: 1.25rem;
+    font-size: 1.10rem;
 }
 #sideSection {
     width: 25%;
