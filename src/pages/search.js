@@ -76,9 +76,9 @@ const BlogSearch = props => {
 
       {handleQueryParam()}
 
-      <div id="indexContainer">
+      <div id="indexContainer" className="container">
         <SEO title="All posts" />
-        <div id="indexSection">
+        <div id="indexSection" className="containerCenter">
           <div className="searchBox fullWidth">
             <input
               id="search_search-box"

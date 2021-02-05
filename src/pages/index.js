@@ -14,13 +14,13 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle} showSearchForm={true}>
       <SEO title="All posts" />
       <Bio />
-      <div id="indexContainer">
+      <div id="indexContainer" className="container">
         <h1
           style={{
             marginTop: 0,
           }}
         >Blog Index</h1>
-        <div id="indexSection">
+        <div id="indexSection" className="containerCenter">
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (

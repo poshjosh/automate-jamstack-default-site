@@ -20,8 +20,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <div id="sectionContainer">
-          <article id="centerSection">
+      <div id="sectionContainer" className="container">
+          <article id="centerSection" className="containerCenter">
             <header>
               <h1
                 style={{
