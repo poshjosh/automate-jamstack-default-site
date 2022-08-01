@@ -32,12 +32,12 @@
     "react-typography": "^0.16.1",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
-    "typography": "^0.16.21",
-    "typography-theme-fairy-gates": "^0.16.21",
-    "typography-theme-grand-view": "^0.16.21",
-    "typography-theme-lincoln": "^0.16.21",
-    "typography-theme-twin-peaks": "^0.16.21",
-    "typography-theme-wordpress-2016": "^0.16.21"
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19",
+    "typography-theme-grand-view": "^0.16.19",
+    "typography-theme-lincoln": "^0.16.19",
+    "typography-theme-twin-peaks": "^0.16.19",
+    "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
