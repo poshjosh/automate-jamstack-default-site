@@ -7,7 +7,7 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { StaticImage } from "gatsby-plugin-image"
 
 import { rhythm } from "../utils/typography"
 
@@ -61,7 +61,7 @@ const Bio = () => {
         background: `#eeddcc`,
       }}
     >
-      <Image
+      <StaticImage
         fixed={data.avatar.childImageSharp.fixed}
         alt={author.name}
         style={{
@@ -89,7 +89,7 @@ const Bio = () => {
           href={`https://twitter.com/${social.twitter}`}
           target="_blank" rel="noopener noreferrer"
         >
-          <Image
+          <StaticImage
             fixed={data.twitter.childImageSharp.fixed}
             alt="Follow me on twitter"
             style={{
@@ -106,7 +106,7 @@ const Bio = () => {
           href={`https://www.facebook.com/${social.facebook}`}
           target="_blank" rel="noopener noreferrer"
         >
-          <Image
+          <StaticImage
             fixed={data.facebook.childImageSharp.fixed}
             alt="Follow me on facebook"
             style={{
