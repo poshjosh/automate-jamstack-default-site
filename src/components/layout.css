@@ -167,6 +167,8 @@ a{
 }
 @media only screen and (min-width: 760px) {
     #sideSection {
+        display: inline-block;
+        visibility: visible;
         width: 25%;
         height: 100%;
         float: left; /** Or overflow: hidden */
