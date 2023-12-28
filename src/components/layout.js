@@ -57,7 +57,7 @@ const Layout = ({ location, title, children, showSearchForm }) => {
         }}
       >
         {/** Use `a` not `Link` as nav.a has style in css file */}
-        <a href="/">ChinomsoIkwuagwu.com</a>
+        <a href="/">{title}</a>
         <SearchForm id="layout_search-form-container" show={showSearchForm}/>
       </nav>
       <header
