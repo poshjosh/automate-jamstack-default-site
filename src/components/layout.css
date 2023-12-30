@@ -137,6 +137,14 @@ a{
         padding: 0 3rem 3rem 3rem;
     }
 }
+#preSearchBoxBreaker {
+    display: block;
+}
+@media only screen and (min-width: 760px) {
+    #preSearchBoxBreaker {
+        display: none;
+    }
+}
 #sectionContainer {
     overflow: hidden;
     vertical-align: top;

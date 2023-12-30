@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import {rhythm} from "../utils/typography";
 
 const BlogSearch = props => {
 
@@ -80,6 +81,12 @@ const BlogSearch = props => {
         <SEO title="All posts" />
         <div id="indexSection" className="containerCenter">
           <div className="searchBox fullWidth">
+            <div
+                className="preSearchBoxBreaker"
+                style={{
+                  height: rhythm(1.2), // sync with marginTop of heroImage in layout.js
+                }}
+            ></div>
             <input
               id="search_search-box"
               className="searchInput fullWidth"
