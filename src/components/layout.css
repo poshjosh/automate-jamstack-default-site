@@ -63,11 +63,7 @@ a{
 /* The hero image */
 .heroImage {
     /** If the banner is not in the custom location, fallback to the default */
-    background-image:
-            url("../../content/blog/assets/banner.jpg"),
-            url("../../content/blog/assets/banner.jpeg"),
-            url("../../content/blog/assets/banner.png"),
-            url("../../content/assets/banner.jpg");
+    background-image: url("../../content/assets/banner.jpg");
 
     /* Set a specific height */
     height: 50%;
