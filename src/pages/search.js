@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import {rhythm} from "../utils/typography";
+import Seo from "../components/seo"
+
+import { useNodeFilter } from "../utils/react-hooks";
 
 const BlogSearch = props => {
-
-//  console.log('BlogSearch. Props: ' + props)
 
   const { data } = props
   const allPosts = data.allMarkdownRemark.edges
@@ -20,8 +19,6 @@ const BlogSearch = props => {
   })
 
   const handleQueryChange = query => {
-
-//    console.log('BlogSearch. Query: ' + query)
 
     const { data } = props
 
@@ -58,7 +55,6 @@ const BlogSearch = props => {
       })
       const searchParams = new URLSearchParams(props.location.search)
       const queryParam = searchParams.get('q')
-//      console.log('BlogSearch. Query param: ' + queryParam)
       if(queryParam) {
         handleQueryChange(queryParam)
       }
@@ -72,13 +68,15 @@ const BlogSearch = props => {
   const siteTitle = data.site.siteMetadata.title
   const { location } = props
 
+  const nodeFilter = useNodeFilter()
+
   return (
     <Layout showSearchForm={false} location={location} title={siteTitle}>
 
       {handleQueryParam()}
 
       <div id="indexContainer" className="container">
-        <SEO title="All posts" />
+        <Seo title="All posts" />
         <div id="indexSection" className="containerCenter">
           <div className="searchBox fullWidth">
             <input
@@ -93,6 +91,11 @@ const BlogSearch = props => {
           <br/>
           <p>Showing results for: <tt>{query}</tt></p>
           {posts.map(({ node }) => {
+
+            if (!nodeFilter(node)) {
+              return null
+            }
+
             const { excerpt } = node
 
             const { slug } = node.fields

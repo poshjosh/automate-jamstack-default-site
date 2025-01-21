@@ -3,16 +3,20 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { rhythm } from "../utils/typography"
+
+import { useNodeFilter } from "../utils/react-hooks"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
+  const nodeFilter = useNodeFilter()
+
   return (
     <Layout location={location} title={siteTitle} showSearchForm={true}>
-      <SEO title="All posts" />
+      <Seo title="All posts" />
       <Bio />
       <div id="indexContainer" className="container">
         <h1
@@ -22,6 +26,11 @@ const BlogIndex = ({ data, location }) => {
         >Blog Index</h1>
         <div id="indexSection" className="containerCenter">
           {posts.map(({ node }) => {
+
+            if (!nodeFilter(node)) {
+              return null
+            }
+
             const title = node.frontmatter.title || node.fields.slug
             return (
               <article key={node.fields.slug}>

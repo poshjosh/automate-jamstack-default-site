@@ -3,7 +3,6 @@ import React from "react"
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-//    console.log("SearchForm props.show: " + props.show);
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,7 +13,6 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(event) {
-//    console.log('SearchForm. Submitting query to search');
     event.preventDefault();
     var query;
     if(this.state.value) {
@@ -22,7 +20,6 @@ class SearchForm extends React.Component {
     }else{
       query = document.getElementById('search-form_search-box').value;
     }
-//    console.log('SearchForm. Submitting query to search: ' + query);
     window.location.href = '/search/?q=' + query;
   }
 
@@ -37,18 +34,16 @@ class SearchForm extends React.Component {
           padding: `0`,
         }}
         onSubmit={this.handleSubmit}>
-        <label>
-          <input
-            id="search-form_search-box"
-            className="searchInput"
-            type="text"
-            value={this.state.value}
-            placeholder="Type to search..."
-            onChange={this.handleChange} />
-        </label>
+        <input
+          id="search-form_search-box"
+          className="searchInput"
+          type="text"
+          value={this.state.value}
+          placeholder="Type to search..."
+          onChange={this.handleChange}/>
         <input className="emphasis-button"
-          type="submit"
-          value="Search"
+               type="submit"
+               value="Search"
         />
       </form>
     );

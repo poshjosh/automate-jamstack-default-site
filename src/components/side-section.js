@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
+import { useNodeFilter } from "../utils/react-hooks"
+
 const SideSection = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -27,10 +29,17 @@ const SideSection = () => {
     }
   `)
 
+  const nodeFilter = useNodeFilter()
+
   const posts = data.allMarkdownRemark.edges
   return (
     <div>
       {posts.map(({ node }) => {
+
+        if (!nodeFilter(node)) {
+          return null
+        }
+
         const title = node.frontmatter.title || node.fields.slug
         return (
           <p key={node.fields.slug}>

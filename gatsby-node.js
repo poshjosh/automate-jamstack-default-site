@@ -1,6 +1,8 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+const { getNodeFilterByPath } = require(`./src/utils/functions-non-es6`)
+
 exports.createPages = async ({ graphql, actions }, _, cb) => {
   const { createPage } = actions
 
@@ -31,12 +33,35 @@ exports.createPages = async ({ graphql, actions }, _, cb) => {
     throw result.errors
   }
 
+  function findNextNode(posts, nodeFilter, index) {
+    for (let i = index; i < posts.length; i++) {
+      const post = posts[i]
+      if (nodeFilter(post.node)) {
+        return post.node
+      }
+    }
+    return null
+  }
+
+  function findPreviousNode(posts, nodeFilter, index) {
+    for (let i = index; i >= 0; i--) {
+      const post = posts[i]
+      if (nodeFilter(post.node)) {
+        return post.node
+      }
+    }
+    return null
+  }
+
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+
+    const nodeFilter = getNodeFilterByPath(post.node.fields.slug)
+
+    const previous = findNextNode(posts, nodeFilter, index + 1)
+    const next = findPreviousNode(posts, nodeFilter, index - 1)
 
     createPage({
       path: post.node.fields.slug,
