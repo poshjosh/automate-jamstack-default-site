@@ -7,7 +7,7 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import { rhythm } from "../utils/typography"
 
@@ -16,23 +16,29 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(
+            layout: FIXED
+            width: 48
+            height: 48
+          )
         }
       }
       twitter: file(absolutePath: { regex: "/twitter-icon.png/" }) {
         childImageSharp {
-          fixed(width: 32, height: 32) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(
+            layout: FIXED
+            width: 48
+            height: 48
+          )
         }
       }
       facebook: file(absolutePath: { regex: "/facebook-icon.png/" }) {
         childImageSharp {
-          fixed(width: 32, height: 32) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(
+            layout: FIXED
+            width: 48
+            height: 48
+          )
         }
       }
       site {
@@ -56,17 +62,16 @@ const Bio = () => {
       style={{
         display: `flex`,
         marginBottom: rhythm(3 / 4),
-        maxHeight: 62,
         paddingBottom: 0,
         background: `#eeddcc`,
       }}
     >
-      <StaticImage
-        fixed={data.avatar.childImageSharp.fixed}
+      <GatsbyImage
+        image={data.avatar.childImageSharp.gatsbyImageData}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
-          minWidth: 60,
+          minWidth: 48,
           borderRadius: `100%`,
           paddingBottom: 0,
         }}
@@ -74,28 +79,28 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
+      <div>
+        <small className="nobreak nooverflow">Written by</small>
+        &emsp;<strong className="nobreak nooverflow">{author.name}</strong>
+        &emsp;<tt>{author.summary}</tt>&emsp;
+      </div>
       <div
         style={{
           paddingBottom: 0,
         }}
       >
-        <span>
-          <small className="nobreak nooverflow">Written by</small>
-          &emsp;<strong className="nobreak nooverflow">{author.name}</strong>
-          &emsp;<tt>{author.summary}</tt>&emsp;
-        </span>
-        <br/>
         <a
           href={`https://twitter.com/${social.twitter}`}
           target="_blank" rel="noopener noreferrer"
         >
-          <StaticImage
-            fixed={data.twitter.childImageSharp.fixed}
+          <GatsbyImage
+            image={data.twitter.childImageSharp.gatsbyImageData}
             alt="Follow me on twitter"
             style={{
               marginRight: rhythm(1 / 2),
-              minWidth: 32,
+              minWidth: 48,
               borderRadius: `100%`,
+              display: `inline-block`,
             }}
             imgStyle={{
               borderRadius: `50%`,
@@ -106,13 +111,14 @@ const Bio = () => {
           href={`https://www.facebook.com/${social.facebook}`}
           target="_blank" rel="noopener noreferrer"
         >
-          <StaticImage
-            fixed={data.facebook.childImageSharp.fixed}
+          <GatsbyImage
+            image={data.facebook.childImageSharp.gatsbyImageData}
             alt="Follow me on facebook"
             style={{
               marginRight: rhythm(1 / 2),
-              minWidth: 32,
+              minWidth: 48,
               borderRadius: `100%`,
+              display: `inline-block`,
             }}
             imgStyle={{
               borderRadius: `50%`,
