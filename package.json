@@ -48,6 +48,11 @@
   ],
   "license": "MIT",
   "main": "n/a",
+  "overrides": {
+    "gatsby": {
+      "gatsby-script": "1.4.0"
+    }
+  },
   "repository": {
     "type": "${SITE_REPOSITORY_TYPE}",
     "url": "${SITE_REPOSITORY_URL}"
