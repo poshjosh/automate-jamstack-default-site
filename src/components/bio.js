@@ -14,7 +14,7 @@ import { rhythm } from "../utils/typography"
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/profile-pic.(jpg|jpeg|png|gif|webp)/" }) {
         childImageSharp {
           gatsbyImageData(
             layout: FIXED
@@ -23,7 +23,7 @@ const Bio = () => {
           )
         }
       }
-      twitter: file(absolutePath: { regex: "/twitter-icon.png/" }) {
+      twitter: file(absolutePath: { regex: "/twitter-icon.(jpg|jpeg|png|gif|webp)/" }) {
         childImageSharp {
           gatsbyImageData(
             layout: FIXED
@@ -32,7 +32,7 @@ const Bio = () => {
           )
         }
       }
-      facebook: file(absolutePath: { regex: "/facebook-icon.png/" }) {
+      facebook: file(absolutePath: { regex: "/facebook-icon.(jpg|jpeg|png|gif|webp)/" }) {
         childImageSharp {
           gatsbyImageData(
             layout: FIXED

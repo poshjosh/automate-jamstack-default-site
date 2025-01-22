@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-01-22
+
 ### Added
 
+- Support for more image formats: `(jpg|jpeg|png|gif|webp)`
 - Filtering by path prefix. E.g we can now filter by `/DE/`.
 - CHANGELOG
 
