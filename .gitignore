@@ -1,32 +1,5 @@
+git-ignore/
 
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@poshjosh
-gatsbyjs /
-gatsby-starter-blog
-Template
-
-45
-2.4k
-
-    1.1k
-
-Code
-Pull requests 0
-Actions
-Projects 0
-Wiki
-Security
-Insights
-gatsby-starter-blog/.gitignore
-@gatsbybot gatsbybot feat(starters): Update .gitignore in all starters to ignore .env, .en… c04e494 on Oct 25, 2019
-@KyleAMathews
-@DSchau
-@gatsbybot
-69 lines (51 sloc) 974 Bytes
 # Logs
 logs
 *.log
@@ -96,18 +69,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-

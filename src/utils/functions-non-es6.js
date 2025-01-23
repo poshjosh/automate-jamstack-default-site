@@ -1,12 +1,13 @@
 // No fancy js in this file, because it is used by gatsby-node.js
 // No export or import e.t.c., just plain js
 
-const supportedCountryCodes = ["DE"]
+const supportedCountryCodes = ["de"]  // Should be in lower case
 
 const getRequiredPathPrefix = (path) => {
 
-  const predicate = (code) => path.startsWith(`/${code.toLowerCase()}/`)
-    || path.startsWith(`/${code.toUpperCase()}/`)
+  const candidate = path?.toString()?.toLowerCase()
+
+  const predicate = (code) => candidate && candidate.includes(`/${code}/`)
 
   const countryCode = supportedCountryCodes.find(predicate)
 
@@ -17,7 +18,9 @@ function getNodeFilterByPath(path) {
 
   const requiredPathPrefix = getRequiredPathPrefix(path)
 
-  return (node) => !requiredPathPrefix || node.fields.slug.startsWith(requiredPathPrefix)
+  return (node) => {
+    return !requiredPathPrefix || node?.fields?.slug?.toString().toLowerCase().includes(requiredPathPrefix)
+  }
 }
 
 module.exports = {
