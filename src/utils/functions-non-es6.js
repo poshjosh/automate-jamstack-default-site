@@ -1,7 +1,8 @@
 // No fancy js in this file, because it is used by gatsby-node.js
 // No export or import e.t.c., just plain js
+const { LANGUAGE_CODES } = require(`./iso-639-1-language-codes-non-es6`)
 
-const supportedCountryCodes = ["de"]  // Should be in lower case
+const languageCodes = Object.keys(LANGUAGE_CODES)
 
 const getRequiredPathPrefix = (path) => {
 
@@ -9,7 +10,7 @@ const getRequiredPathPrefix = (path) => {
 
   const predicate = (code) => candidate && candidate.includes(`/${code}/`)
 
-  const countryCode = supportedCountryCodes.find(predicate)
+  const countryCode = languageCodes.find(predicate)
 
   return countryCode ? `/${countryCode}/` : undefined
 }
