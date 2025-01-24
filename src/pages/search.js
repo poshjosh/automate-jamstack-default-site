@@ -27,13 +27,9 @@ const BlogSearch = props => {
     const filteredData = posts.filter(post => {
       const { description, title, tags } = post.node.frontmatter
       return (
-        description.toLowerCase().includes(query.toLowerCase()) ||
-        title.toLowerCase().includes(query.toLowerCase()) ||
-        (tags &&
-          tags
-            .join("")
-            .toLowerCase()
-            .includes(query.toLowerCase()))
+        (description && description.toLowerCase().includes(query.toLowerCase())) ||
+        (title && title.toLowerCase().includes(query.toLowerCase())) ||
+        (tags && tags.join("").toLowerCase().includes(query.toLowerCase()))
       )
     })
 

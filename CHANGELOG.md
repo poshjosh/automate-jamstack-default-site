@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Error in search caused by absence of description, title or tags.
+
 ## [0.2.0] - 2025-01-22
 
 ### Added
