@@ -25,11 +25,14 @@ const BlogSearch = props => {
     const posts = data.allMarkdownRemark.edges || []
 
     const filteredData = posts.filter(post => {
-      const { description, title, tags } = post.node.frontmatter
+      const { rawMarkdownBody, frontmatter } = post.node
+      const { description, title, tags } = frontmatter
+      const q = query.toLowerCase()
       return (
-        (description && description.toLowerCase().includes(query.toLowerCase())) ||
-        (title && title.toLowerCase().includes(query.toLowerCase())) ||
-        (tags && tags.join("").toLowerCase().includes(query.toLowerCase()))
+        (description && description.toLowerCase().includes(q)) ||
+        (title && title.toLowerCase().includes(q)) ||
+        (tags && tags.join("").toLowerCase().includes(q)) ||
+        (rawMarkdownBody && rawMarkdownBody.toLowerCase().includes(q))
       )
     })
 
@@ -143,6 +146,7 @@ export const pageQuery = graphql`
         node {
           excerpt(pruneLength: 200)
           id
+          rawMarkdownBody
           frontmatter {
             title
             description
@@ -150,7 +154,6 @@ export const pageQuery = graphql`
 
             tags
           }
-
           fields {
             slug
           }
