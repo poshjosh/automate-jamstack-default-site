@@ -40,15 +40,8 @@ a{
 }
 
 .fixedtop #layout_search-form-container{
-    float: right;
     vertical-align: center;
     padding: 0 1rem 0 1rem;
-}
-
-.emphasis-button{
-    color: #ffeedd;
-    background-color: #624;
-    border:1px solid #987;
 }
 
 /* Change background on mouse-over */
@@ -134,30 +127,6 @@ a{
         padding: 0 3rem 3rem 3rem;
     }
 }
-#sectionContainer {
-    overflow: hidden;
-    vertical-align: top;
-    /**    border: 0.25rem solid #ddccbb; */
-}
-#centerSection {
-    float: left;
-    vertical-align: top;
-    display: inline-block;
-    border: 0.5rem solid #eeddcc;
-    padding: 0.75rem;
-}
-@media only screen and (min-width: 760px) {
-    #centerSection {
-        float: left;
-        vertical-align: top;
-        display: inline-block;
-        border: 0.5rem solid #eeddcc;
-        padding: 3rem;
-    }
-}
-#articleContent {
-    font-size: 1.1rem;
-}
 #sideSection {
     display: block;
     padding: 1rem;
@@ -176,23 +145,4 @@ a{
 
 .fullWidth{
     width: 100%;
-}
-
-.trace{
-    border: 2px solid black;
-}
-
-.navArrow{
-    color: navy;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.nobreak{
-    white-space: nowrap;
-}
-
-.nooverflow{
-    overflow: hidden;
-    text-overflow: ellipsis;
 }

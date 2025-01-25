@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-import { useNodeFilter } from "../utils/react-hooks"
+import { useNodeFilter, useTranslate } from "../utils/react-hooks"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -16,14 +16,12 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle} showSearchForm={true}>
-      <Seo title="All posts" />
+      <Seo title={useTranslate('all_posts')} />
       <Bio />
       <div id="indexContainer" className="container">
-        <h1
-          style={{
-            marginTop: 0,
-          }}
-        >Blog Index</h1>
+
+        <h1 style={{ marginTop: 0 }}>{useTranslate('index_title')}</h1>
+
         <div id="indexSection" className="containerCenter">
           {posts.map(({ node }) => {
 

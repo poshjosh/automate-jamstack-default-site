@@ -1,53 +1,36 @@
-import React from "react"
+import React, {useState} from "react"
+import { useTranslate } from "../utils/react-hooks"
+import "./search-form.css"
 
-class SearchForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+const SearchForm = ({ show }) => {
+
+  const [value, setValue] = useState('')
+
+  function handleChange(event) {
+    setValue(event.target.value);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    var query;
-    if(this.state.value) {
-      query = this.state.value;
-    }else{
-      query = document.getElementById('search-form_search-box').value;
-    }
-    window.location.href = '/search/?q=' + query;
+    window.location.href = '/search/?q=' + value;
   }
 
-  render() {
-    return (this.props.show === true) && (
-      <form
-        style={{
-          float: `right`,
-          display: `inline-block`,
-          margin: `0`,
-          border: `0`,
-          padding: `0`,
-        }}
-        onSubmit={this.handleSubmit}>
-        <input
-          id="search-form_search-box"
-          className="searchInput"
-          type="text"
-          value={this.state.value}
-          placeholder="Type to search..."
-          onChange={this.handleChange}/>
-        <input className="emphasis-button"
-               type="submit"
-               value="Search"
-        />
-      </form>
-    );
-  }
+  const placeholder = useTranslate('search_prompt');
+  const buttonValue = useTranslate('search');
+
+  return (show === true) && (
+    <form id="search-form" onSubmit={handleSubmit}>
+      <input
+        id="search-form_search-box"
+        className="searchInput"
+        type="text"
+        value={value}
+        aria-label="Search"
+        placeholder={placeholder}
+        onChange={handleChange}/>
+      <input className="emphasis-button" type="submit" value={buttonValue}/>
+    </form>
+  );
 }
 
 export default SearchForm

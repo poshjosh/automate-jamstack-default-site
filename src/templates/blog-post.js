@@ -8,6 +8,7 @@ import { rhythm, scale } from "../utils/typography"
 import SideSection from "../components/side-section"
 
 import "../components/layout.css"
+import "./blog-post.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark

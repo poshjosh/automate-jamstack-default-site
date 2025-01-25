@@ -74,7 +74,8 @@ const Layout = ({ location, title, children, showSearchForm }) => {
       >{header}</header>
       {breakpoints.medium
         ? null
-        : <SearchForm id="layout_search-form-container" show={showSearchForm}/>
+        : <SearchForm id="layout_search-form-container" show={showSearchForm}
+                      style={{ display: `block` }}/>
       }
       <main>{children}</main>
       <footer className="fullWidth"

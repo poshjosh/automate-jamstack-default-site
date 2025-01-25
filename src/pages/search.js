@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import { useNodeFilter } from "../utils/react-hooks";
+import { useNodeFilter, useTranslate } from "../utils/react-hooks"
 
 const BlogSearch = props => {
 
@@ -75,7 +75,7 @@ const BlogSearch = props => {
       {handleQueryParam()}
 
       <div id="indexContainer" className="container">
-        <Seo title="All posts" />
+        <Seo title={useTranslate('all_posts')} />
         <div id="indexSection" className="containerCenter">
           <div className="searchBox fullWidth">
             <input
@@ -83,7 +83,7 @@ const BlogSearch = props => {
               className="searchInput fullWidth"
               type="text"
               aria-label="Search"
-              placeholder="Type to search..."
+              placeholder={useTranslate('search_prompt')}
               onChange={handleInputChange}
             />
           </div>

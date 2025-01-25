@@ -28,7 +28,7 @@ const Seo = ({ description, meta, title }) => {
     `
   )
 
-  const lang = useLanguageCode('en')
+  const lang = useLanguageCode()
   const metaDescription = description || site.siteMetadata.description
 
   return (

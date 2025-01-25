@@ -9,7 +9,9 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
+import { useTranslate } from "../utils/react-hooks"
 import { rhythm } from "../utils/typography"
+import "./bio.css"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -80,7 +82,7 @@ const Bio = () => {
         }}
       />
       <div>
-        <small className="nobreak nooverflow">Written by</small>
+        <small className="nobreak nooverflow">{useTranslate('author')}:</small>
         &emsp;<strong className="nobreak nooverflow">{author.name}</strong>
         &emsp;<tt>{author.summary}</tt>&emsp;
       </div>
@@ -95,7 +97,7 @@ const Bio = () => {
         >
           <GatsbyImage
             image={data.twitter.childImageSharp.gatsbyImageData}
-            alt="Follow me on twitter"
+            alt={useTranslate('follow_on_twitter')}
             style={{
               marginRight: rhythm(1 / 2),
               minWidth: 48,
@@ -113,7 +115,7 @@ const Bio = () => {
         >
           <GatsbyImage
             image={data.facebook.childImageSharp.gatsbyImageData}
-            alt="Follow me on facebook"
+            alt={useTranslate('follow_on_facebook')}
             style={{
               marginRight: rhythm(1 / 2),
               minWidth: 48,
