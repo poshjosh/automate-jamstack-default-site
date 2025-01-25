@@ -1,13 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useBreakpoint } from 'gatsby-plugin-breakpoints'
 
 import { rhythm } from "../utils/typography"
 import SearchForm from "../components/search-form"
 import "./layout.css"
 
 const Layout = ({ location, title, children, showSearchForm }) => {
-
-//  console.log('Show search form: ' + showSearchForm)
 
   const rootPath = `${__PATH_PREFIX__}/`
   let header
@@ -42,6 +41,8 @@ const Layout = ({ location, title, children, showSearchForm }) => {
     )
   }
 
+  const breakpoints = useBreakpoint()
+
   return (
     <div
       style={{
@@ -58,7 +59,10 @@ const Layout = ({ location, title, children, showSearchForm }) => {
       >
         {/** Use `a` not `Link` as nav.a has style in css file */}
         <a href="/">{title}</a>
-        <SearchForm id="layout_search-form-container" show={showSearchForm}/>
+        {breakpoints.medium
+          ? <SearchForm id="layout_search-form-container" show={showSearchForm}/>
+          : null
+        }
       </nav>
       <header
         className="heroImage"
@@ -68,6 +72,10 @@ const Layout = ({ location, title, children, showSearchForm }) => {
           color: `white`,
         }}
       >{header}</header>
+      {breakpoints.medium
+        ? null
+        : <SearchForm id="layout_search-form-container" show={showSearchForm}/>
+      }
       <main>{children}</main>
       <footer className="fullWidth"
         style={{

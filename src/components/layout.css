@@ -12,12 +12,9 @@ article{
     color: #123456;
 }
 
-/**
-* Some themes use box-shadow to add underline
-*/
 a{
+    box-shadow: none; /** Some themes use box-shadow to add underline */
     text-decoration: none;
-    box-shadow: none;
 }
 
 /* The navigation bar */
@@ -162,16 +159,18 @@ a{
     font-size: 1.1rem;
 }
 #sideSection {
-    display: none;
+    display: block;
+    padding: 1rem;
+    visibility: visible;
 }
 @media only screen and (min-width: 760px) {
     #sideSection {
         display: inline-block;
+        float: left; /** Or overflow: hidden */
+        height: 100%;
+        padding: 1rem;
         visibility: visible;
         width: 25%;
-        height: 100%;
-        float: left; /** Or overflow: hidden */
-        padding: 1rem;
     }
 }
 

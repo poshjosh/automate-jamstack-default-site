@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Google-analytics.
 - Full content search.
 - Infer lang from location pathname.
 

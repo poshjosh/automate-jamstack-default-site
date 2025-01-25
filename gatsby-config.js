@@ -1,3 +1,7 @@
+const customBreakpointQueries = {
+  medium: '(min-width: 760px)',
+};
+
 module.exports = {
   siteMetadata: {
     title: `${SITE_TITLE}`,
@@ -49,15 +53,36 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-breakpoints`,
+      options: {
+        queries: customBreakpointQueries,
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    //{
-    //  resolve: `gatsby-plugin-google-analytics`,
-    //  options: {
-    //    //trackingId: `ADD YOUR TRACKING ID HERE`,
-    //  },
-    //},
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          `${GOOGLE_ANALYTICS_MEASUREMENT_ID}`,
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        gtagConfig: {
+          anonymize_ip: true,  // Required in Germany
+          cookie_expires: 0,
+        },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: false,
+        },
+      },
+    },
     //`gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
