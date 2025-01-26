@@ -12,8 +12,13 @@ module.exports = {
     description: `${SITE_DESCRIPTION}`,
     siteUrl: `${SITE_URL}`,
     social: {
-      twitter: `${SITE_TWITTER_HANDLE}`,
       facebook: `${SITE_FACEBOOK_HANDLE}`,
+      instagram: `${SITE_INSTAGRAM_HANDLE}`,
+      linkedin: `${SITE_LINKEDIN_HANDLE}`,
+      reddit: `${SITE_REDDIT_HANDLE}`,
+      tiktok: `${SITE_TIKTOK_HANDLE}`,
+      twitter: `${SITE_TWITTER_HANDLE}`,
+      youtube: `${SITE_YOUTUBE_HANDLE}`,
     },
   },
   plugins: [
