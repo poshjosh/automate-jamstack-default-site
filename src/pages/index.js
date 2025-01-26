@@ -1,62 +1,24 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
+import ArticleListings from "../components/article-listings"
+import Page from "../components/page"
 import Seo from "../components/seo"
-import { rhythm } from "../utils/typography"
-
-import { useNodeFilter, useTranslate } from "../utils/react-hooks"
+import { useTranslate } from "../utils/react-hooks"
+import { ALL_POSTS, INDEX_TITLE } from "../utils/i18n"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
-  const nodeFilter = useNodeFilter()
+  const { title } = data.site.siteMetadata
+  const posts = data.allMarkdownRemark.edges || []
 
   return (
-    <Layout location={location} title={siteTitle} showSearchForm={true}>
-      <Seo title={useTranslate('all_posts')} />
-      <Bio />
-      <div id="indexContainer" className="container">
-
-        <h1 style={{ marginTop: 0 }}>{useTranslate('index_title')}</h1>
-
-        <div id="indexSection" className="containerCenter">
-          {posts.map(({ node }) => {
-
-            if (!nodeFilter(node)) {
-              return null
-            }
-
-            const title = node.frontmatter.title || node.fields.slug
-            return (
-              <article key={node.fields.slug}>
-                <header>
-                  <h3
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
-                    <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                      {title}
-                    </Link>
-                  </h3>
-                  <small>{node.frontmatter.date}</small>
-                </header>
-                <section>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </section>
-              </article>
-            )
-          })}
-        </div>
+    <Page location={location} showBio={true} showSearchForm={true} siteName={title}>
+      <Seo title={useTranslate(ALL_POSTS)}/>
+      <h1 style={{marginTop: 0}}>{useTranslate(INDEX_TITLE)}</h1>
+      <div>
+        <ArticleListings posts={posts}/>
       </div>
-    </Layout>
+    </Page>
   )
 }
 

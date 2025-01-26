@@ -1,14 +1,15 @@
 import React, { useState } from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import { graphql } from "gatsby"
 
-import { useNodeFilter, useTranslate } from "../utils/react-hooks"
+import ArticleListings from "../components/article-listings"
+import Page from "../components/page";
+import { useTranslate } from "../utils/react-hooks"
+import { SEARCH_ALL_POSTS, SEARCH_PROMPT } from "../utils/i18n"
+import Seo from "../components/seo";
 
-const BlogSearch = props => {
+const BlogSearch = ({ data, location }) => {
 
-  const { data } = props
-  const allPosts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark.edges || []
 
   const emptyQuery = ""
 
@@ -19,10 +20,6 @@ const BlogSearch = props => {
   })
 
   const handleQueryChange = query => {
-
-    const { data } = props
-
-    const posts = data.allMarkdownRemark.edges || []
 
     const filteredData = posts.filter(post => {
       const { rawMarkdownBody, frontmatter } = post.node
@@ -52,76 +49,41 @@ const BlogSearch = props => {
       setState({
         doneQueryParam: true,
       })
-      const searchParams = new URLSearchParams(props.location.search)
+      const searchParams = new URLSearchParams(location.search)
       const queryParam = searchParams.get('q')
       if(queryParam) {
         handleQueryChange(queryParam)
       }
     }
+    return null
   }
 
   const { filteredData, query } = state
   const hasSearchResults = filteredData && query !== emptyQuery
-  const posts = hasSearchResults ? filteredData : allPosts
+  const foundPosts = hasSearchResults ? filteredData : posts
 
   const siteTitle = data.site.siteMetadata.title
-  const { location } = props
-
-  const nodeFilter = useNodeFilter()
 
   return (
-    <Layout showSearchForm={false} location={location} title={siteTitle}>
+    <Page location={location} showSearchForm={false} siteName={siteTitle}>
 
       {handleQueryParam()}
 
-      <div id="indexContainer" className="container">
-        <Seo title={useTranslate('all_posts')} />
-        <div id="indexSection" className="containerCenter">
-          <div className="searchBox fullWidth">
-            <input
-              id="search_search-box"
-              className="searchInput fullWidth"
-              type="text"
-              aria-label="Search"
-              placeholder={useTranslate('search_prompt')}
-              onChange={handleInputChange}
-            />
-          </div>
-          <br/>
-          <p>Showing results for: <tt>{query}</tt></p>
-          {posts.map(({ node }) => {
+      <Seo title={useTranslate(SEARCH_ALL_POSTS)}/>
+      <p className="search-box full-width">
+        <input
+          id="search_search-box"
+          className="search-input full-width"
+          type="text"
+          aria-label="Search"
+          placeholder={useTranslate(SEARCH_PROMPT)}
+          onChange={handleInputChange}
+        />
+      </p>
+      <p>Showing results for: <tt>{query}</tt></p>
+      <ArticleListings posts={foundPosts}/>
 
-            if (!nodeFilter(node)) {
-              return null
-            }
-
-            const { excerpt } = node
-
-            const { slug } = node.fields
-            const { title, date, description } = node.frontmatter
-            return (
-              <article key={slug}>
-                <header>
-                  <div>
-                    <Link to={slug}>{title}</Link>
-                  </div>
-                  <small>{date}</small>
-                </header>
-                <section>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: description || excerpt,
-                    }}
-                  />
-                </section>
-                <br/>
-              </article>
-            )
-          })}
-        </div>
-
-      </div>
-    </Layout>
+    </Page>
   )
 }
 

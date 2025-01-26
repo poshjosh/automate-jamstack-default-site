@@ -1,8 +1,11 @@
-import React, {useState} from "react"
-import { useTranslate } from "../utils/react-hooks"
+import React, { useState } from "react"
+import { useLanguageCode, useTranslate } from "../utils/react-hooks"
+import { SEARCH, SEARCH_PROMPT } from "../utils/i18n"
 import "./search-form.css"
 
 const SearchForm = ({ show }) => {
+
+  const lang = useLanguageCode()
 
   const [value, setValue] = useState('')
 
@@ -12,17 +15,17 @@ const SearchForm = ({ show }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    window.location.href = '/search/?q=' + value;
+    window.location.href = `/search/?lang=${lang}&q=${value}`;
   }
 
-  const placeholder = useTranslate('search_prompt');
-  const buttonValue = useTranslate('search');
+  const placeholder = useTranslate(SEARCH_PROMPT);
+  const buttonValue = useTranslate(SEARCH);
 
   return (show === true) && (
     <form id="search-form" onSubmit={handleSubmit}>
       <input
         id="search-form_search-box"
-        className="searchInput"
+        className="search-input"
         type="text"
         value={value}
         aria-label="Search"

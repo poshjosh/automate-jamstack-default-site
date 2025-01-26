@@ -1,30 +1,9 @@
-.navArrow{
+.nav-arrow{
     color: navy;
     font-size: 1.5rem;
     font-weight: bold;
 }
-#sectionContainer {
-    overflow: hidden;
-    vertical-align: top;
-    /**    border: 0.25rem solid #ddccbb; */
-}
-#centerSection {
-    float: left;
-    vertical-align: top;
-    display: inline-block;
-    border: 0.5rem solid #eeddcc;
-    padding: 0.75rem;
-}
-@media only screen and (min-width: 760px) {
-    #centerSection {
-        float: left;
-        vertical-align: top;
-        display: inline-block;
-        border: 0.5rem solid #eeddcc;
-        padding: 3rem;
-    }
-}
-#articleContent {
+#article-content {
     font-size: 1.1rem;
 }
 

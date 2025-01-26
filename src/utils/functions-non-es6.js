@@ -15,9 +15,7 @@ const getLanguageCodeByPath = (path) => {
   return languageCode || undefined
 }
 
-function getNodeFilterByPath(path) {
-
-  const lang = getLanguageCodeByPath(path)
+function getNodeFilterByLang(lang) {
 
   const requiredPathPrefix = lang ? `/${lang}/` : undefined
 
@@ -26,7 +24,13 @@ function getNodeFilterByPath(path) {
   }
 }
 
+function getNodeFilterByPath(path) {
+
+  return getNodeFilterByLang(getLanguageCodeByPath(path))
+}
+
 module.exports = {
   getLanguageCodeByPath,
+  getNodeFilterByLang,
   getNodeFilterByPath,
 }

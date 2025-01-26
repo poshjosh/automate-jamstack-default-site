@@ -1,27 +1,39 @@
 export const DEFAULT_LANG = 'en'
+export const ALL_POSTS = 'all_posts'
+export const AUTHOR = 'author'
+export const FOLLOW_ON_FACEBOOK = 'follow_on_facebook'
+export const FOLLOW_ON_TWITTER = 'follow_on_twitter'
+export const INDEX_TITLE = 'index_title'
+export const NOT_FOUND_TITLE = 'not_found_title'
+export const NOT_FOUND_MESSAGE = 'not_found_message'
+export const SEARCH = 'search'
+export const SEARCH_ALL_POSTS = 'search_all_posts'
+export const SEARCH_PROMPT = 'search_prompt'
 
 const config = {
   en: {
-    all_posts: 'All posts',
-    author: 'Written by',
-    follow_on_facebook: 'Follow me on facebook',
-    follow_on_twitter: 'Follow me on twitter',
-    index_title: 'Blog Index',
-    not_found_title: 'Not found (code: 404)',
-    not_found_message: 'You just hit a route that does not exist.',
-    search: 'Search',
-    search_prompt: 'Type to search',
+    [ALL_POSTS]: 'All posts',
+    [AUTHOR]: 'Written by',
+    [FOLLOW_ON_FACEBOOK]: 'Follow me on facebook',
+    [FOLLOW_ON_TWITTER]: 'Follow me on twitter',
+    [INDEX_TITLE]: 'Blog Index',
+    [NOT_FOUND_TITLE]: 'Not found (code: 404)',
+    [NOT_FOUND_MESSAGE]: 'You just hit a route that does not exist.',
+    [SEARCH]: 'Search',
+    [SEARCH_ALL_POSTS]: 'Search all posts',
+    [SEARCH_PROMPT]: 'Type to search',
   },
   de: {
-    all_posts: 'Alle Beiträge',
-    author: 'Autor',
-    follow_on_facebook: 'Folge mir auf Facebook',
-    follow_on_twitter: 'Folge mir auf Twitter',
-    index_title: 'Blog Index',
-    not_found_title: 'Nicht gefunden (Code: 404)',
-    not_found_message: 'Sie sind gerade auf eine Route gestoßen, die nicht existiert.',
-    search: 'Suche',
-    search_prompt: 'Hier Suchen',
+    [ALL_POSTS]: 'Alle Beiträge',
+    [AUTHOR]: 'Autor',
+    [FOLLOW_ON_FACEBOOK]: 'Folge mir auf Facebook',
+    [FOLLOW_ON_TWITTER]: 'Folge mir auf Twitter',
+    [INDEX_TITLE]: 'Blog Index',
+    [NOT_FOUND_TITLE]: 'Nicht gefunden (Code: 404)',
+    [NOT_FOUND_MESSAGE]: 'Sie sind gerade auf eine Route gestoßen, die nicht existiert.',
+    [SEARCH]: 'Suche',
+    [SEARCH_ALL_POSTS]: 'Suche alle Beiträge',
+    [SEARCH_PROMPT]: 'Hier Suchen',
   }
 }
 

@@ -1,6 +1,5 @@
 # TODOs
 
-- Add google analytics.
 - Why are names with '?' failing. Fail fast or fix names.
 - Add commenting and comments.
 - Add home for supported languages e.g `/de`.
