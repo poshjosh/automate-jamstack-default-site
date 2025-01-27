@@ -59,3 +59,7 @@ export function translate(lang, key) {
   }
   return (config['en'] && config['en'][key]) || key
 }
+
+export function languages() {
+  return Object.keys(config)
+}

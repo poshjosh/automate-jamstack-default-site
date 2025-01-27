@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { languages } from "../utils/i18n"
 import { rhythm } from "../utils/typography"
 import "./layout.css"
 
@@ -55,6 +56,15 @@ const Layout = ({ location, siteName, children }) => {
       >
         {/** Use `a` not `Link` as nav.a has style in css file */}
         <a href="/">{siteName}</a>
+        <span>
+          {languages().map(lang => {
+            return (
+              <span style={{ float: `right` }}>
+                <a style={{ float: `right` }} href={"/?lang=" + lang}>{lang}</a>&emsp;|&emsp;
+              </span>
+            )
+          })}
+        </span>
       </nav>
       <header
         className="hero-image"
@@ -66,9 +76,9 @@ const Layout = ({ location, siteName, children }) => {
       >{header}</header>
       <main>{children}</main>
       <footer className="full-width"
-        style={{
-          textAlign: `center`,
-        }}
+              style={{
+                textAlign: `center`,
+              }}
       >
         &copy; {new Date().getFullYear()}
         {` `}
