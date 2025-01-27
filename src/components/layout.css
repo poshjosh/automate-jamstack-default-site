@@ -17,26 +17,42 @@ a{
     text-decoration: none;
 }
 
+.fixed-top-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
 /* The navigation bar */
 .fixed-top {
-    vertical-align: center;
-    overflow: hidden;
     background-color: #987;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
+    vertical-align: center;
     width: 100%; /* Full width */
-    padding: 0;
-    margin: 0;
     z-index: 1000;
 }
 
-/* Links inside the navbar */
-.fixed-top a{
-    float: left;
-    vertical-align: center;
-    padding: 0 1rem 0 0;
-    color: #ffeedd;
+.fixed-top select {
+    color: #543;
+    float: right;
+    margin-right: 1rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
     text-align: center;
+    vertical-align: center;
+}
+
+
+/* Links inside the navbar */
+.fixed-top a {
+    color: #ffeedd;
+    float: left;
+    margin-left: 1rem;
+    text-align: center;
+    vertical-align: center;
 }
 
 /* Change background on mouse-over */

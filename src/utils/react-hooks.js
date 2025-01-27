@@ -1,6 +1,6 @@
 import { useLocation } from "@reach/router"
 import { getLanguageCodeByPath, getNodeFilterByLang } from "./functions-non-es6"
-import { translate, DEFAULT_LANG } from "./i18n"
+import { DEFAULT_LANG, translate } from "./i18n"
 
 export function useLanguageCode() {
   const location = useLocation()
