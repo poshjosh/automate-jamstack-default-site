@@ -133,9 +133,8 @@ const SocialImages = () => {
     if (!href) return null
 
     return (
-      <Image href={href}
-             image={data[key]?.childImageSharp?.gatsbyImageData}
-             alt={config[key]?.alt}/>
+      <Image key={key} href={href} alt={config[key]?.alt}
+             image={data[key]?.childImageSharp?.gatsbyImageData}/>
     )
   }
 
