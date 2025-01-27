@@ -11,7 +11,7 @@ const ArticleListing = ({ node }) => (
         </Link>
       </div>
       <small>
-        {node.frontmatter.date} | {node.frontmatter.description || node.excerpt}
+        {node.frontmatter.date} | {node.frontmatter.description || node.excerpt}...
       </small>
     </header>
   </article>
