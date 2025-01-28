@@ -30,7 +30,7 @@ const Layout = ({ location, siteName, children }) => {
       >
         {/** Use `a` not `Link` as nav.a has style in css file */}
         <a href="/">{siteName}</a>
-        <LanguageOptions/>
+        &emsp;<LanguageOptions/>
       </nav>
       <header
         className="hero-image"
