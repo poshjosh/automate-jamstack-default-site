@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { getLanguageOptions } from "../utils/i18n"
 import { useLanguageCode } from "../utils/react-hooks"
 
 const LanguageOptions = () => {
+  const data = useStaticQuery(graphql`
+    query LanguageOptionsQuery {
+      site {
+        siteMetadata {
+          supportedLanguageCodes
+        }
+      }
+    }
+  `)
+
+  const { supportedLanguageCodes } = data.site.siteMetadata
 
   const VALUE_KEY = 'value'
   const LABEL_KEY = 'label'
 
-  const options = getLanguageOptions(VALUE_KEY, LABEL_KEY)
+  const options = getLanguageOptions(
+    supportedLanguageCodes ? supportedLanguageCodes.split(',') : [],
+    VALUE_KEY, LABEL_KEY)
 
   const inferredLang = useLanguageCode()
   const [selectedLang, setSelectedLang] = useState("")
@@ -19,11 +33,13 @@ const LanguageOptions = () => {
   }
 
   useEffect(() => {
-    setSelectedLang(inferredLang)
-  }, [inferredLang]);
+    if (inferredLang !== selectedLang) {
+      setSelectedLang(inferredLang)
+    }
+  }, [inferredLang, selectedLang]);
 
 
-  return (
+  return ((!options || options.length < 2) ? null :
     <select value={selectedLang} onChange={handleLanguageChange}>
       <option value="" disabled={true}>Choose language</option>
       {options.map(option => {

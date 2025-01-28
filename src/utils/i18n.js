@@ -70,8 +70,8 @@ export function translate(lang, key) {
   return lang === DEFAULT_LANG ? key : translate(DEFAULT_LANG, key)
 }
 
-export function getLanguageOptions(valueKey = 'value', labelKey = 'label') {
-  return Object.keys(config).map(lang => {
+export function getLanguageOptions(languageCodes = [], valueKey = 'value', labelKey = 'label') {
+  return Object.keys(config).filter(lang => languageCodes.includes(lang)).map(lang => {
     const option = {}
     option[valueKey] = lang
     option[labelKey] = config[lang]["displayName"] || lang

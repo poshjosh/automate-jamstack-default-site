@@ -11,6 +11,7 @@ module.exports = {
     },
     description: `${SITE_DESCRIPTION}`,
     siteUrl: `${SITE_URL}`,
+    supportedLanguageCodes: `${SITE_SUPPORTED_LANGUAGE_CODES}`,
     social: {
       facebook: `${SITE_FACEBOOK_HANDLE}`,
       instagram: `${SITE_INSTAGRAM_HANDLE}`,
