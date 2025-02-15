@@ -19,6 +19,7 @@ export const SEARCH_PROMPT = 'search_prompt'
 
 const config = {
   en: {
+    dir: "ltr",
     displayName: "English",
     translations: {
       [ALL_POSTS]: 'All posts',
@@ -40,6 +41,7 @@ const config = {
     }
   },
   ar: {
+    dir: "rtl",
     displayName: "العربية",
     translations: {
       [ALL_POSTS]: 'كل المنشورات',
@@ -290,7 +292,7 @@ const config = {
         [SEARCH_PROMPT]: "Введіть для пошуку",
       }
     },
-    zh: {
+    "zh-cn": {
       displayName: "中文",
       translations: {
         [ALL_POSTS]: '所有帖子',
@@ -314,19 +316,53 @@ const config = {
   }
 }
 
+function fmt(lang) {
+  return lang?.toString()?.toLowerCase()
+}
+
+function get(lang, context, key, defaultValue) {
+  lang = fmt(lang)
+  let found;
+  if (context) {
+    found = (config[lang] && config[lang][context] && config[lang][context][key]) || undefined
+  } else {
+    found = (config[lang] && config[lang][key]) || undefined
+  }
+  return found || defaultValue
+}
+
+
+/**
+ * Translate a key to a language.
+ * If language code has a sub part e.g. zh-CN fallback to zh, otherwise fallback to DEFAULT_LANG
+ * @param lang The language code to translate to.
+ * @param key The key  to translate.
+ * @returns {*} The translated string.
+ */
 export function translate(lang, key) {
-  let found = (config[lang] && config[lang]["translations"] && config[lang]["translations"][key]) || undefined
+  const found = get(lang, "translations", key, undefined)
   if (found) {
     return found
   }
-  return lang === DEFAULT_LANG ? key : translate(DEFAULT_LANG, key)
+  if (lang === DEFAULT_LANG) {
+    return key
+  }
+  // If language code has a sub part e.g. zh-CN fallback to zh, otherwise fallback to DEFAULT_LANG
+  const parts = lang.toString().split('-')
+  lang = parts.length > 1 ? parts[0] : DEFAULT_LANG
+  return translate(lang, key)
 }
 
 export function getLanguageOptions(languageCodes = [], valueKey = 'value', labelKey = 'label') {
-  return Object.keys(config).filter(lang => languageCodes.includes(lang)).map(lang => {
+  languageCodes = languageCodes.map(lang => fmt(lang))
+  return Object.keys(config).map(lang => fmt(lang)).filter(lang => languageCodes.includes(lang)).map(lang => {
     const option = {}
     option[valueKey] = lang
     option[labelKey] = config[lang]["displayName"] || lang
     return option
   })
+}
+
+export function getDir(lang) {
+  return get(lang, undefined, "dir", "ltr")
 }

@@ -1,6 +1,6 @@
 import { useLocation } from "@reach/router"
 import { getLanguageCodeByPath, getNodeFilterByLang } from "./functions-non-es6"
-import { DEFAULT_LANG, translate } from "./i18n"
+import { DEFAULT_LANG, getDir, translate } from "./i18n"
 
 export function useLanguageCode() {
   const location = useLocation()
@@ -10,6 +10,10 @@ export function useLanguageCode() {
   }
   lang = new URLSearchParams(location.search).get('lang')
   return lang || DEFAULT_LANG
+}
+
+export function useDir(lang) {
+  return getDir(lang)
 }
 
 export function useNodeFilter() {

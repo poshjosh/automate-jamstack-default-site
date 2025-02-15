@@ -1,17 +1,22 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { rhythm } from "../utils/typography"
+import { useDir, useLanguageCode } from "../utils/react-hooks";
 
 const Image = ({ href, image, alt }) => {
 
+  const dir = useDir(useLanguageCode())
+
   if (!image) return null
+
+  const style = dir === "ltr" ? { marginRight: rhythm(1 / 2) } : { marginLeft: rhythm(1 / 2) }
 
   const renderImage = () => {
     return <GatsbyImage
       image={image}
       alt={alt}
       style={{
-        marginRight: rhythm(1 / 2),
+        ...style,
         minWidth: 48,
         borderRadius: `100%`,
         display: `inline-block`,

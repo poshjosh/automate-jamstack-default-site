@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import { useLanguageCode } from "../utils/react-hooks"
+import { useDir, useLanguageCode } from "../utils/react-hooks"
 
 const Seo = ({ description, meta, title }) => {
   const { site } = useStaticQuery(
@@ -29,12 +29,13 @@ const Seo = ({ description, meta, title }) => {
   )
 
   const lang = useLanguageCode()
+  const dir = useDir(lang)
   const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang, dir,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
